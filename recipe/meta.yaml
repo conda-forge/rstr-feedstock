@@ -1,17 +1,17 @@
 {% set name = "rstr" %}
-{% set version = "2.2.6" %}
+{% set version = "3.0.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 5dea822326e418e0c9816c9cd14ae9c7be2d4cd4334043c397f202bc2ae2eda4
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: bc3d4f929e34dcde3d90884bc9217a465069f51164f4220c8e551205a882e9b7
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
 requirements:
@@ -27,13 +27,13 @@ test:
     - rstr.tests
 
 about:
-  home: "http://bitbucket.org/leapfrogdevelopment/rstr/overview"
+  home: http://bitbucket.org/leapfrogdevelopment/rstr/overview
   license: BSD
   license_family: BSD
   license_file: LICENSE.txt
-  summary: "Generate random strings in Python"
-  doc_url: "http://bitbucket.org/leapfrogdevelopment/rstr/overview"
-  dev_url: "http://bitbucket.org/leapfrogdevelopment/rstr/overview"
+  summary: Generate random strings in Python
+  doc_url: http://bitbucket.org/leapfrogdevelopment/rstr/overview
+  dev_url: http://bitbucket.org/leapfrogdevelopment/rstr/overview
 
 extra:
   recipe-maintainers:
