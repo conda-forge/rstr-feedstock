@@ -1,12 +1,11 @@
-{% set name = "rstr" %}
 {% set version = "3.2.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: rstr
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/r/rstr/rstr-{{ version }}.tar.gz
   sha256: 54b36313a3aecb37450083004f3951cbf04687eeadb1ede90e8bf48fcbabd736
 
 build:
@@ -17,24 +16,30 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.7
   run:
-    - python
+    - python >=3.7
 
 test:
   imports:
     - rstr
-    - rstr.tests
+  requires:
+    - pip
+    - mypy
+    - pytest-cov
+  commands:
+    - pip check
+    - mypy --strict -m rstr
+    - pytest -vv --pyargs rstr --cov=rstr --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=94
 
 about:
-  home: http://bitbucket.org/leapfrogdevelopment/rstr/overview
-  license: BSD
+  home: https://github.com/leapfrogonline/rstr
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
   summary: Generate random strings in Python
-  doc_url: http://bitbucket.org/leapfrogdevelopment/rstr/overview
-  dev_url: http://bitbucket.org/leapfrogdevelopment/rstr/overview
 
 extra:
   recipe-maintainers:
     - claymcleod
+    - bollwyvl
