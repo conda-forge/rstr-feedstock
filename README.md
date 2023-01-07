@@ -1,17 +1,13 @@
 About rstr
 ==========
 
-Home: http://bitbucket.org/leapfrogdevelopment/rstr/overview
+Home: https://github.com/leapfrogonline/rstr
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/rstr-feedstock/blob/main/LICENSE.txt)
 
 Summary: Generate random strings in Python
-
-Development: http://bitbucket.org/leapfrogdevelopment/rstr/overview
-
-Documentation: http://bitbucket.org/leapfrogdevelopment/rstr/overview
 
 Current build status
 ====================
@@ -147,5 +143,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bollwyvl](https://github.com/bollwyvl/)
 * [@claymcleod](https://github.com/claymcleod/)
 
