@@ -1,4 +1,4 @@
-{% set version = "3.2.0" %}
+{% set version = "3.2.1" %}
 
 package:
   name: rstr
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/r/rstr/rstr-{{ version }}.tar.gz
-  sha256: 54b36313a3aecb37450083004f3951cbf04687eeadb1ede90e8bf48fcbabd736
+  sha256: c51924c626540eb626ed3eb8e5e6c1d2f2c73959d039c8ff61ee562baeb4e0ff
 
 build:
   number: 0
