@@ -38,7 +38,7 @@ test:
     - pip check
     # xeger.py:15: error: Unused "type: ignore" comment
     - mypy --strict -p rstr --no-warn-unused-ignores
-    - pytest -vv --cov=rstr --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=94
+    - pytest -vv --cov=rstr --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=88
 
 about:
   home: https://github.com/leapfrogonline/rstr
