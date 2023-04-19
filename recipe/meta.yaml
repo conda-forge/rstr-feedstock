@@ -27,11 +27,14 @@ test:
     - rstr
   requires:
     - pip
+    - m2-grep  # [win]
     - mypy
     - pytest-cov
   commands:
+    - pip list
+    - pip list | grep -iE "^rstr\s+{{ version.replace(".", "\.") }}"
     - pip check
-    - mypy --strict -m rstr
+    - mypy --strict -p rstr
     - pytest -vv --pyargs rstr --cov=rstr --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=94
 
 about:
