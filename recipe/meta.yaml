@@ -34,7 +34,8 @@ test:
     - pip list
     - pip list | grep -iE "^rstr\s+{{ version.replace(".", "\.") }}"
     - pip check
-    - mypy --strict -p rstr
+    # xeger.py:15: error: Unused "type: ignore" comment
+    - mypy --strict -p rstr --no-warn-unused-ignores
     - pytest -vv --pyargs rstr --cov=rstr --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=94
 
 about:
