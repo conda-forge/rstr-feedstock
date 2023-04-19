@@ -23,6 +23,8 @@ requirements:
     - python >=3.7
 
 test:
+  source_files:
+    - tests
   imports:
     - rstr
   requires:
@@ -36,7 +38,7 @@ test:
     - pip check
     # xeger.py:15: error: Unused "type: ignore" comment
     - mypy --strict -p rstr --no-warn-unused-ignores
-    - pytest -vv --pyargs rstr --cov=rstr --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=94
+    - pytest -vv --cov=rstr --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=94
 
 about:
   home: https://github.com/leapfrogonline/rstr
