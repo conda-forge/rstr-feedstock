@@ -1,53 +1,60 @@
-{% set version = "4.0.0" %}
+schema_version: 1
+
+context:
+  version: "4.0.0"
 
 package:
   name: rstr
-  version: {{ version }}
+  version: ${{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/source/r/rstr/rstr-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/r/rstr/rstr-${{ version }}.tar.gz
   sha256: 1a1e7f304b0291edbc12955a9cb4093bfe1c7c1d48e0797e752bb3bf2a24574a
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python {{ python_min }}
+    - python ${{ python_min }}
     - setuptools >=61.2
     - setuptools-scm >=3.4.3
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
 
-test:
-  source_files:
-    - tests
-  imports:
-    - rstr
-  requires:
-    - pip
-    - m2-grep  # [win]
-    - mypy
-    - pytest-cov
-    - python {{ python_min }}
-  commands:
-    - pip list
-    - pip list | grep -iE "^rstr\s+{{ version.replace(".", "\.") }}"
-    - pip check
-    # xeger.py:15: error: Unused "type: ignore" comment
-    - mypy --strict -p rstr --no-warn-unused-ignores
-    - pytest -vv --cov=rstr --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=88
+tests:
+  - python:
+      imports:
+        - rstr
+      pip_check: true
+      python_version: ${{ python_min }}
+  - files:
+      source:
+        - tests
+    requirements:
+      run:
+        - pip
+        - if: win
+          then: m2-grep
+        - mypy
+        - pytest-cov
+        - python ${{ python_min }}
+    script:
+      - pip list
+      - pip list | grep -iE "^rstr\s+${{ version | replace(".", "\.") }}"
+      - mypy --strict -p rstr --no-warn-unused-ignores
+      - pytest -vv --cov=rstr --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=88
 
 about:
-  home: https://github.com/leapfrogonline/rstr
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE.txt
   summary: Generate random strings in Python
+  homepage: https://github.com/leapfrogonline/rstr
 
 extra:
   recipe-maintainers:
     - bollwyvl
+
