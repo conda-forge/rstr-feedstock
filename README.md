@@ -3,11 +3,13 @@ About rstr-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/rstr-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/leapfrogonline/rstr
+Home: https://pypi.org/project/rstr
 
 Package license: BSD-3-Clause
 
 Summary: Generate random strings in Python
+
+Development: https://github.com/leapfrogonline/rstr
 
 Current build status
 ====================
